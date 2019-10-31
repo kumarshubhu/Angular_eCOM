@@ -1,0 +1,45 @@
+<div id="bodydiv">
+  <div>
+    <div style="float:right;margin-right: 20px;margin-bottom: 20px;">
+      <span class="btn btn-info btn-lg">
+        <span  class="glyphicon glyphicon-shopping-cart"></span> {{this.cart.CartCount}}
+      </span>
+    </div>
+
+    <h2 style="text-align: center;color: rgb(152, 106, 199)">Your Cart</h2>
+  </div>
+  <table  class="table table">
+    <thead>
+      <th>
+        Item Name
+      </th>
+      <th>
+        Item Price
+      </th>
+      <th>
+        Quantity
+      </th>
+      <th>Price</th>
+    </thead>
+    <tr *ngFor="let c of CartItems">
+      <td>
+        {{c.name}}
+      </td>
+      <td>
+        {{c.price}}
+      </td>
+      <td>
+        {{c.quantity}}
+      </td>
+      <td>{{c.price*c.quantity}}</td>
+      <td><button (click)="Delete(c.id)">Delete</button></td>
+    </tr>
+  </table>
+  
+  <button style="float:right;margin-right: 40px;background-color: black;color: whitesmoke;border: none" (click)="bagTotal()">Buy</button>
+
+  <div id="bag" style="text-align: center;">
+    Your Total is: {{Total}}
+  </div>
+  
+</div>

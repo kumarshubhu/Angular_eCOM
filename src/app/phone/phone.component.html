@@ -1,0 +1,55 @@
+<h2 style="text-align: center;">Be Smart Buy Smart</h2>
+<button class="btn btn-primary" (click)="add_NewItem()">Add Product</button>
+<div id="addproduct">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><input type="text" #name placeholder="ITEM NAME"></td>
+        <td><input type="number" #price placeholder="PRICE"></td>
+        <td><input type="number" #rating placeholder="RATING<=5"></td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-primary" (click)="AddItem(name.value,price.value,rating.value)">Add</button>
+</div>
+<div style="float:right;margin-bottom: 10px;margin-right: 115px;">
+  <span (click)="routeToCart()" class="btn btn-info btn-lg">
+    <span  class="glyphicon glyphicon-shopping-cart" ></span> {{product.CartCount}}
+  </span>
+</div>
+<table class="table table-hover"  style="border:2px solid gray;">
+    <thead>
+      <th style="text-align: center;" align="center">Id</th>
+      <th style="text-align: center;" align="center">Name</th>
+      <th style="text-align: center;"  align="center">Price</th>
+      <th style="text-align: center;" align="center">Rating</th>
+      <th style="text-align: center;" align="center">Add to Cart</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let p of myPhone | paginate: { itemsPerPage: 5, currentPage: p }" >
+      <td align="center">{{p.id}}</td>
+      <td align="center">{{p.name}}</td>
+      <td align="center">{{p.price}}</td>
+      <td align="center">{{p.rating}}</td>
+      <td align="center"><input type="number" #input> <button style="margin-left:5px;"  class="btn btn-success" (click)="addToCart(p,input.value)">Add</button></td>
+      {{CartValue}}
+    </tr>
+  </tbody>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </table>
+
+  
+
+
+  
+  
+    
+  
+  
